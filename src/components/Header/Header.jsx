@@ -6,7 +6,7 @@ import { logout } from "../../features/auth/authSlice";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const [search, setSearch] = useState("");
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -24,6 +24,7 @@ const Header = () => {
       <input type="text" name="search" onKeyUp={handleSearch} />
       {user ? (
         <>
+        {user.role == "admin" && <Link to="/admin"> Admin</Link> }
           <span>
             <Link to="/profile"> {user.name} /</Link>
           </span>
